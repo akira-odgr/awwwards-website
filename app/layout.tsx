@@ -1,16 +1,46 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local"
+
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { LenisProvider } from "@/components/LenisProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const clashDisplay = localFont({
+  src: [
+    {
+      path: "./fonts/ClashDisplay-Extralight.ttf",
+      weight: "200",
+      style: "normal"
+    },
+    {
+      path: "./fonts/ClashDisplay-Light.ttf",
+      weight: "300",
+      style: "normal"
+    },
+    {
+      path: "./fonts/ClashDisplay-Regular.ttf",
+      weight: "400",
+      style: "normal"
+    },
+    {
+      path: "./fonts/ClashDisplay-Medium.ttf",
+      weight: "500",
+      style: "normal"
+    },
+    {
+      path: "./fonts/ClashDisplay-Semibold.ttf",
+      weight: "600",
+      style: "normal"
+    },
+    {
+      path: "./fonts/ClashDisplay-Bold.ttf",
+      weight: "700",
+      style: "normal"
+    },
+  ],
+  display: "swap"
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +53,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${clashDisplay.className} antialiased`}
       >
-        {children}
+        <LenisProvider>
+          <Header />
+          <main className="min-h-[200vh] bg-white relative z-40 w-full">
+            {children}
+          </main>
+          <Footer />
+        </LenisProvider>
       </body>
     </html>
   );
