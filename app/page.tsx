@@ -2,6 +2,7 @@ import Hero from "@/app/pageComponents/Hero";
 import About from "./pageComponents/About";
 import Works from "./pageComponents/Works";
 import Projects from "./pageComponents/Projects";
+import Process from "./pageComponents/Process";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <About />
       <Works />
       <Projects />
+      <Process />
     </>
   );
 }

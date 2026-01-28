@@ -19,7 +19,7 @@ export const Projects = () => {
             scrollTrigger: {
                 trigger: ".projects-wrapper",
                 start: "top 60%",
-                markers: true
+                // markers: true
             }
         })
 

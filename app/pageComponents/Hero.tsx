@@ -16,7 +16,7 @@ export const Hero = () => {
             scrollTrigger: {
                 trigger: ".hero-wrapper",
                 start: "top center",
-                markers: true
+                // markers: true
             }
         })
 

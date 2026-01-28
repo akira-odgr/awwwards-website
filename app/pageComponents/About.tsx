@@ -18,7 +18,7 @@ export const About = () => {
             scrollTrigger: {
                 trigger: ".about-wrapper",
                 start: "top 60%",
-                markers: true
+                // markers: true
             }
         })
 
