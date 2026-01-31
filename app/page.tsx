@@ -5,6 +5,7 @@ import Projects from "./pageComponents/Projects";
 import Process from "./pageComponents/Process";
 import Awards from "./pageComponents/Awards";
 import Testimonials from "./pageComponents/Testimonials";
+import WorkWith from "./pageComponents/WorkWith";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Process />
       <Awards />
       <Testimonials />
+      <WorkWith />
     </>
   );
 }

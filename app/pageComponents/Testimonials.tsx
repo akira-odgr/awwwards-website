@@ -1,22 +1,49 @@
+"use client"
+import { gsap, useGSAP, SplitText } from '@/lib/gsap-utils'
 import { testimonialsItems } from '@/data/data'
 import { cn } from '@/lib/utils'
 import { ArrowBigLeft, ArrowBigRight } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import { useRef } from 'react'
 
 export const Testimonials = () => {
+    const containerRef = useRef<HTMLDivElement | null>(null)
+
+    useGSAP(() => {
+        const textSplit = SplitText.create(".text", {
+            type: "words lines",
+            linesClass: "text-line"
+        })
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".testimonials-wrapper",
+                start: "top 60%"
+            }
+        })
+
+        tl.from(textSplit.words, {
+            yPercent: 100,
+            ease: "power2.inOut",
+            duration: 1,
+            stagger: 0.03
+        })
+
+        // gsap.to(".")
+    }, { scope: containerRef })
+
     return (
-        <section className={cn("section")}>
+        <section ref={containerRef} className={cn("section")}>
             <div className={cn("container")}>
                 {/* Title */}
-                <div className={cn("sm:mx-auto")}>
+                <div className={cn("testimonials-wrapper", "sm:mx-auto")}>
                     <div className={cn("flex gap-5 items-end")}>
-                        <h2 className={cn("section-title")}>What</h2>
-                        <p className={cn("max-w-60 uppercase font-medium hidden", "md:block")}>Over time, some of them have become friends</p>
+                        <h2 className={cn("text", "section-title")}>What</h2>
+                        <p className={cn("text", "max-w-60 uppercase font-medium hidden", "md:block")}>Over time, some of them have become friends</p>
                     </div>
-                    <h2 className={cn("section-title")}>people say</h2>
+                    <h2 className={cn("text", "section-title")}>people say</h2>
                     {/* sm text */}
-                    <p className={cn("max-w-96 uppercase font-medium mt-2", "md:hidden")}>Over time, some of them have become friends</p>
+                    <p className={cn("text", "max-w-96 uppercase font-medium mt-2", "md:hidden")}>Over time, some of them have become friends</p>
                 </div>
                 {/* Wrapper */}
                 <div className={cn("border mt-16", "lg:mt-24")}>
@@ -67,7 +94,7 @@ export const Testimonials = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 
